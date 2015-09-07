@@ -1,0 +1,15 @@
+p {
+  text-align: left; }
+
+.jumbotron {
+  background-color: #f24445; }
+  .jumbotron > p {
+    text-align: left;
+    color: yellow; }
+
+footer {
+  background: blue;
+  font-size: 24px; }
+
+/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=main.scss.map */
