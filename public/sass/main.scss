@@ -1,0 +1,22 @@
+$background: #f24445;
+$background-light: lighten($background, 20%);
+
+p {
+  text-align: left; }
+
+.jumbotron  {
+	background-color: $background;
+
+	> p {
+		text-align: left;
+		color: yellow;
+	}
+}
+
+footer {
+  background: blue;
+  font-size: 24px; }
+
+/*# sourceMappingURL=main.css.map */
+
+/*# sourceMappingURL=main.scss.map */
