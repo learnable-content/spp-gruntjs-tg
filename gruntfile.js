@@ -1,50 +1,67 @@
-/*
-All of our Grunt code will go inside this wrapper function
-*/
 module.exports = function(grunt) {
-    /*
-    Step 1. Configure Grunt Tasks Inside grunt.InitConfig Object
-    */
+
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        //pkg property defined to read package.json file
-        concat: {
-            //name the concat task 
+        connect: {
             options: {
-                separator: ';'
+                port: 9000,
+                //port on which we want our server to run
+                base: 'public',
+                //directory for our index.html file
+                livereload: 35729
+                    //set livereload port to 35729 to work with 'watch' task
             },
-            dist: {
-                src: ['js/*.js'],
-                //files we want to concatenate
-                dest: 'dist/<%= pkg.name %>.js'
-                    //file we want to generate 
+            start: {
+                //we will use this 'start' target to run our server
+                options: {
+                    open: true,
+                    //by setting this to true, the connect task will automatically open our browser to localhost:9000
+                }
             }
         },
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= pkg.author %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-                    //prepends a banner at the beginning of your file.
+        watch: {
+            livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                        //this enables livereload on port 9000
+                },
+                files: [
+                    'public/index.html',
+                    'public/css/main.css'
+                ]
             },
+            sass: {
+                files: 'public/sass/main.scss',
+                tasks: ['sass']
+            }
+        },
+        sass: {
             dist: {
+                options: {
+                    sourcemap: 'none'
+                },
                 files: {
-                    'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'public/css/main.css': 'public/sass/main.scss'
                 }
             }
         }
     });
-    /*
-    Step 2. Load Grunt Plugins Below
-    */
-    
-    
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    
-    /*
-    Step 3. Register Grunt Tasks
-    */
-    
-    
-    grunt.registerTask('dist', [ 'concat', 'uglify']);
-    
+
+
+
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+
+
+    grunt.registerTask('serve', ['connect:start', 'watch', 'sass']);
+
+
+
+
+
+
+
+
+
+
 }
