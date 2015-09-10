@@ -1,2 +1,2 @@
-# sp-gruntjs-1
+# Getting Started with Grunt
 # spp-gruntjs-tg
