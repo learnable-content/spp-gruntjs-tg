@@ -1,2 +1,3 @@
 # Getting Started with Grunt
-# spp-gruntjs-tg
+
+This is the code sample for Getting Started with Grunt.
