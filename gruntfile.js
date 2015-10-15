@@ -25,24 +25,9 @@ module.exports = function(grunt) {
                         //this enables livereload on port 9000
                 },
                 files: [
-                    'public/index.html',
-                    'public/css/main.css'
+                    'public/index.html'
                 ]
             },
-            sass: {
-                files: 'public/sass/main.scss',
-                tasks: ['sass']
-            }
-        },
-        sass: {
-            dist: {
-                options: {
-                    sourcemap: 'none'
-                },
-                files: {
-                    'public/css/main.css': 'public/sass/main.scss'
-                }
-            }
         }
     });
 
@@ -50,10 +35,10 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-sass');
 
 
-    grunt.registerTask('serve', ['connect:start', 'watch', 'sass']);
+    grunt.registerTask('serve', ['connect:start', 'watch']);
+
 
 
 
