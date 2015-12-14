@@ -6751,4 +6751,20 @@ button.close {
     display: none !important;
   }
 }
+
+header {
+     background-image: url('/images/newyork.jpg');
+        background-size: cover;
+        height: 600px;     
+}
+
+header > img {
+    margin-top: 3em;
+    max-height: 375px;
+}
+.logo-imgs {
+  max-height: 300px;
+  margin-top: 1em;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

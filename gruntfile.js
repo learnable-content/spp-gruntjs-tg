@@ -28,6 +28,31 @@ module.exports = function(grunt) {
                     'public/index.html'
                 ]
             },
+        },
+        uncss: {
+            dist: {
+                files: {
+                    'dist/css/main.css': ['public/index.html', 'public/about.html']
+                }
+            },
+        },
+        cssmin: {
+            dist: {
+                files: {
+                    'dist/css/main.css': 'dist/css/main.css'
+                }
+            },
+        },
+        htmlmin: {
+            dist: {
+                options: {
+                    collapseWhitespace: true
+                },
+                files: {
+                    'dist/index.html': 'public/index.html',
+                    'dist/about.html': 'public/about.html'
+                }
+            }
         }
     });
 
@@ -35,14 +60,12 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-uncss');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     grunt.registerTask('serve', ['connect:start', 'watch']);
-
-
-
-
-
+    grunt.registerTask('build', ['uncss', 'cssmin', 'htmlmin']);
 
 
 
